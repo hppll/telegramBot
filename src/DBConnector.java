@@ -4,7 +4,9 @@ import java.util.Date;
 public class DBConnector {
     private Connection connect() {
         // SQLite connection string
-        String url = "jdbc:sqlite:D://uni//javaP//SQLite//db//accountingBot.db";
+       // String url = "jdbc:sqlite:D://uni//javaP//SQLite//db//accountingBot.db";
+      //  String url = "jdbc:sqlite:C:/Users/User/IdeaProjects/bot1/accountingBot.db";
+        String url = "jdbc:sqlite:accountingBot.db";
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
@@ -103,7 +105,7 @@ public class DBConnector {
             while (rs.next()) {
             //    if (user_id == rs.getLong("payerID")) {
                     msg = msg + "\n" + ("\t" +
-                            rs.getInt("idp") + "." + "\t" +
+                            rs.getInt("idp") +  "." + "\t" +
                     rs.getString("sum") + "\t" +
                             rs.getString("status") + "\t" +
                             rs.getString("payDate"));
@@ -122,7 +124,7 @@ public class DBConnector {
             pstmt.setLong(1, user_id);
             pstmt.setInt(2, num);
             pstmt.executeUpdate();
-            return ("+");
+            return ("");
         } catch (SQLException e) {
             return ("Error in changepaymentstatus");
         }

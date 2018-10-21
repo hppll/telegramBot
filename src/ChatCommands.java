@@ -15,7 +15,7 @@ public class ChatCommands {
         } else if (subStr[0].equals("/pay")) {
             try {
                 Integer.parseInt(subStr[1]);
-                dbc.insertIntoPayments(user_id, subStr[1], null);
+                dbc.insertIntoPayments(user_id, subStr[1], "unconfirmed");
                 int subsum;
                 if (Integer.parseInt(subStr[1]) < 0) {
                     return ("Only positive values.");
@@ -52,7 +52,8 @@ public class ChatCommands {
         }else if ((subStr[0].equals("/changepaymentstatus"))) {
             try {
                 int paymNum = Integer.parseInt(subStr[1]);
-                return dbc.changepaymentstatus(user_id, paymNum);
+                dbc.changepaymentstatus(user_id, paymNum);
+                return null;
             }catch (NumberFormatException e) {
                 return ("Wrong message format");
             }
